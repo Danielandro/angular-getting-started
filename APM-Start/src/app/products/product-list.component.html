@@ -1,12 +1,15 @@
 <div class="card">
   <div class="card-header">
-ng  </div>
+    ng
+  </div>
 </div>
 <div class="card-body">
   <div class="row">
     <div class="col-md-2">Filter By:</div>
     <div class="col-md-4">
-      <input [(ngModel)]="listFilter" type="text" />
+      <label>
+        <input [(ngModel)]="listFilter" type="text" />
+      </label>
     </div>
   </div>
   <div class="row">
@@ -41,6 +44,7 @@ ng  </div>
             [title]="product.productName"
             [style.width.px]="imageWidth"
             [style.margin.px]="imageMargin"
+            [alt]="product.description"
           />
         </td>
         <td>{{ product.productName }}</td>
