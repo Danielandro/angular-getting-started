@@ -81,6 +81,6 @@ export class ProductListComponent implements OnInit {
   }
 
   onRatingClicked(message: string) {
-    console.log("PARENT COMPONENT: ", message)
+    this.pageTitle = `${this.pageTitle}: ${message}`;
   }
 }

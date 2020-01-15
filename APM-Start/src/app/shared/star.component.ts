@@ -7,7 +7,7 @@ import { Component, OnChanges, Input, EventEmitter, Output } from "@angular/core
 })
 export class StarComponent implements OnChanges {
   starWidth: number = 75;
-  @Input() rating: number = 4;
+  @Input() rating: number;
   @Output() ratingClicked: EventEmitter<string> = new EventEmitter<string>();
 
   // listens for changes to any input property
@@ -17,6 +17,6 @@ export class StarComponent implements OnChanges {
   }
 
   onClick(): void {
-    this.ratingClicked.emit("CHILD COMPONENT: This is onClick");
+    this.ratingClicked.emit(`The rating ${this.rating} was clicked`);
   }
 }
