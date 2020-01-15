@@ -14,6 +14,7 @@ export class ProductListComponent implements OnInit {
   showImage: boolean = false;
   filteredProducts: IProduct[];
   _listFilter: string;
+  errorMessage: string;
 
   // called when binding needs the value
   get listFilter(): string {
@@ -44,9 +45,12 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe(products => {
-      this.products = products;
-      this.filteredProducts = this.products;
+    this.productService.getProducts().subscribe({
+      next: products => {
+        this.products = products;
+        this.filteredProducts = this.products;
+      },
+      error: err => (this.errorMessage = err)
     });
   }
 
