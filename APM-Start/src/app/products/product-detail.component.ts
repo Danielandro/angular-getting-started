@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { IProduct } from "./product";
-import { runInThisContext } from "vm";
 
 @Component({
   selector: "pm-product-detail",
@@ -12,7 +11,7 @@ export class ProductDetailComponent implements OnInit {
   product: IProduct; // product details being displayed
   pageTitle: string = "Product Detail";
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     // + converts string to number
@@ -28,5 +27,9 @@ export class ProductDetailComponent implements OnInit {
       starRating: 4.8,
       imageUrl: "assets/images/hammer.png"
     };
+  }
+
+  onBack(): void {
+    this.router.navigate(["/products"]);
   }
 }
