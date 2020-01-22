@@ -22,13 +22,16 @@ export class ProductDetailGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    let id = +next.paramMap.get("id");
+    // use info from route user is attempting to reach to get id
+    let id = +next.url[1].path;
 
+    // if id is NaN or is negative, alert user and redirect to products page
     if (isNaN(id) || id < 0) {
-      alert("Unable to get book details: Invalid ID");
+      alert("Invalid product ID");
       this.router.navigate(["/products"]);
       return false;
+    } else {
+      return true;
     }
-    return true;
   }
 }
